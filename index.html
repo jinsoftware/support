@@ -1,3 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft Case ID Verification</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f3f3;
+    }
+    .header,
+    .footer {
+      background-color: #0078D4;
+      color: white;
+      padding: 15px 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    .logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px; /* Gap Increased */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #005a9e;
+    }
+    .btn:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    .loading {
+      display: none;
+      font-weight: bold;
+      color: #0078D4;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Microsoft Support</h1>
+  </div>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="logo" alt="Microsoft Logo" />
+    <h2>Case ID Verification</h2>
+    <p>Please enter the case ID provided by your Microsoft technician:</p>
+    <input type="text" id="caseId" class="input-field" placeholder="Enter Case ID" aria-describedby="caseIdHelp" onkeypress="handleKeyPress(event)"/>
+    <small id="caseIdHelp" class="form-text text-muted">
+      Enter your 6-digit case ID as provided by your technician.
+    </small>
+    <br><br> <!-- Added extra space -->
+    <button class="btn" id="verifyBtn" onclick="verifyCaseId()">Continue</button>
+    <p class="error" id="errorMessage"></p>
+    <p class="loading" id="loadingMessage">Verifying...</p>
+  </div>
+  <div class="footer">
+    <p>Contact support: support@microsoft.com</p>
+  </div>
+  <script>
+    function verifyCaseId() {
+      var caseId = document.getElementById("caseId").value.trim();
+      var errorMessage = document.getElementById("errorMessage");
+      var loadingMessage = document.getElementById("loadingMessage");
+      var verifyBtn = document.getElementById("verifyBtn");
+
+      errorMessage.textContent = "";
+      loadingMessage.style.display = "block";
+      verifyBtn.disabled = true;
+
+      // Simulate a server verification delay
+      setTimeout(function () {
+        loadingMessage.style.display = "none";
+        verifyBtn.disabled = false;
+        if (caseId === "885608") {
+          alert("Verification successful! Redirecting to your case details.");
+          window.location.href = "case-details.html";
+        } else {
+          errorMessage.textContent = "Invalid case ID. Please check your input.";
+        }
+      }, 2000);
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === "Enter") {
+        verifyCaseId();
+      }
+    }
+  </script>
+</body>
+</html>
 function verifyCaseId() {
   var caseId = document.getElementById("caseId").value.trim();
   var errorMessage = document.getElementById("errorMessage");
