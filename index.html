@@ -1,0 +1,23 @@
+function verifyCaseId() {
+  var caseId = document.getElementById("caseId").value.trim();
+  var errorMessage = document.getElementById("errorMessage");
+  var loadingMessage = document.getElementById("loadingMessage");
+  var verifyBtn = document.getElementById("verifyBtn");
+
+  errorMessage.textContent = "";
+  loadingMessage.style.display = "block";
+  verifyBtn.disabled = true;
+
+  setTimeout(function () {
+    loadingMessage.style.display = "none";
+    verifyBtn.disabled = false;
+    
+    if (caseId === "885608") {
+      window.location.href = "/shiva/case-jacob.html";  // सही Path (GitHub Pages पर)
+    } else if (caseId === "936756") {
+      window.location.href = "/shiva/case-david.html";  // सही Path (GitHub Pages पर)
+    } else {
+      errorMessage.textContent = "Invalid case ID. Please check your input.";
+    }
+  }, 2000);
+}
